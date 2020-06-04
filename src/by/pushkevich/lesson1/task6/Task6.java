@@ -2,29 +2,56 @@ package by.pushkevich.lesson1.task6;
 
 import java.util.Scanner;
 
+/*
+    Сумма первых n членов арифметической прогрессии вычисляется по формуле Sn = ( a1 + an )* n / 2.
+    Даны a1 и d (шаг арифметической прогрессии).
+    Найдите n, при котором значение Sn выходит за диапазон типов int и long (экспериментальным путем).
+    Проверка входных данных не выполнялась
+*/
 public class Task6 {
     public static void main(String[] args) {
         run();
     }
 
-    private static void getResult(int x, int step) {
+    /*
+        Попытка избавиться от перебора и искать n исходя из максимального int через квадратное уравнение
+    */
+    private static void getResult(long x, long step) {
         long n;
-//        int sum3 = (x + (x + step * (n - 1))) * n / 2;
         long maxIntSum = Integer.MAX_VALUE; // МАксимально возможная сумма элементов
-
-        // При отрицательном шаге имитируем положительное направление
-        if (step < 0) {
-            maxIntSum = (long) Integer.MAX_VALUE + 1 + x;
-            step = -step;
-            x = -x;
-        }
-
-        long desc = (-1 * (2 * x - step)) - (4 * step * (maxIntSum * -2)); // Находим дескриминант
-        n = (int) (-(2 * x - step) + Math.sqrt(desc)) / (2 * step); // Получаем кол-во элементов, которое гарантировано не переполняет тип
+        long disc = (-1 * (2 * x - step)) - (4 * step * (maxIntSum * -2)); // Находим дискриминант
+        n = (int) (-(2 * x - step) + Math.sqrt(disc)) / (2 * step); // Получаем кол-во элементов, которое гарантировано не переполняет тип
         n++; // Добавляем переполняющий элемент
 
         System.out.println("n = " + n + " overflows Integer");
     }
+
+    private static void getIntOverflow(int x, int step) {
+        int n = 1;
+        long sum = x;
+        int point = x + step;
+
+        while (sum <= Integer.MAX_VALUE && sum >= Integer.MIN_VALUE) {
+            sum += point;
+            point += step;
+            n++;
+        }
+        System.out.println("n = " + n + " overflows Integer");
+    }
+
+    private static void getLongOverflow(int x, int step) {
+        long n = 1;
+        double longSum = x;
+        long point = x + step;
+
+        while (longSum <= Long.MAX_VALUE && longSum >= Long.MIN_VALUE) {
+            longSum += point;
+            point += step;
+            n++;
+        }
+        System.out.println("n = " + n + " overflows Long");
+    }
+
 
     private static void run() {
         try (Scanner scanner = new Scanner(System.in)) {
@@ -37,8 +64,9 @@ public class Task6 {
                 System.out.println("Incorrect input. Try again");
                 run();
             }
-
-            getResult(start, step);
+//            getResult(start, step);
+            getIntOverflow(start, step);
+            getLongOverflow(start, step);
         }
     }
 }
