@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Task5 {
     public static void main(String[] args) {
-        run();
+        run(234);
     }
 
     // Выводит сумму аргументов
@@ -35,17 +35,14 @@ public class Task5 {
         System.out.println("After thousands add: " + (number + c * 1000));
     }
 
-    private static void run() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter a number (100 - 999): ");
-            int number = scanner.nextInt();
-            int firstDigit = number / 100;
-            int secondDigit = number % 100 / 10;
-            int thirdDigit = number % 100 % 10;
-            getSum(firstDigit, secondDigit, thirdDigit);
-            multiply(firstDigit, secondDigit, thirdDigit);
-            swapHundredsAndDozens(firstDigit, secondDigit, thirdDigit);
-            addThousands(number, thirdDigit);
-        }
+    private static void run(int number) {
+        int firstDigit = number / 100;
+        int secondDigit = number % 100 / 10;
+        int thirdDigit = number % 100 % 10;
+
+        getSum(firstDigit, secondDigit, thirdDigit);
+        multiply(firstDigit, secondDigit, thirdDigit);
+        swapHundredsAndDozens(firstDigit, secondDigit, thirdDigit);
+        addThousands(number, thirdDigit);
     }
 }

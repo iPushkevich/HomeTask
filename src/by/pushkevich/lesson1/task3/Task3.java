@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Task3 {
     public static void main(String[] args) {
-        run();
+        run(4, 3, 2);
     }
 
     // Выводит удвоенное значение аргуменотов
@@ -28,20 +28,9 @@ public class Task3 {
         System.out.println("c = " + Math.abs(c));
     }
 
-    /* Проверка соответсвия условию a > b > c*/
-    private static boolean checkNumbersDecreasing(double a, double b, double c) {
-        return a > b && b > c;
-    }
 
-    private static void run() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter a, b, c:");
-            double a = scanner.nextDouble();
-            double b = scanner.nextDouble();
-            double c = scanner.nextDouble();
-            if (checkNumbersDecreasing(a, b, c)) doubleTheNumbers(a, b, c);
-            else getNumbersAbs(a, b, c);
-
-        }
+    private static void run(double a, double b, double c) {
+        if (a > b && b > c) doubleTheNumbers(a, b, c);
+        else getNumbersAbs(a, b, c);
     }
 }

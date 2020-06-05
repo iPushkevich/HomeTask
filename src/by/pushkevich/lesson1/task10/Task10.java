@@ -15,24 +15,25 @@ public class Task10 {
     }
 
     // Проверяет, возрастает ли последовательность
-    private static boolean checkIncreasing(int a, int b) {
+    private static boolean isIncreasing(int a, int b) {
         return b > a;
     }
 
     // Проверяет, имеются ли равные "соседи"
-    private static boolean checkEqualNumbers(int a, int b) {
+    private static boolean isEqualNumbers(int a, int b) {
         return a == b;
     }
 
     // Проверяет, чередуются ли знаки аргументов
-    private static boolean checkRotation(int a, int b) {
+    private static boolean isRotation(int a, int b) {
         return ((a > 0 && b < 0) || (a < 0 && b > 0));
 
     }
 
     private static void run() {
+        System.out.println("Enter numbers (two and more):" + "\n" + "0 - exit");
+
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter numbers (two and more):" + "\n" + "0 - exit");
             int first = scanner.nextInt();
             int second = scanner.nextInt();
             boolean increasing = true;
@@ -41,13 +42,15 @@ public class Task10 {
             String part1;
             String part2;
             String part3;
+
             while (second != 0) {
-                if (!checkIncreasing(first, second)) increasing = false;
-                if (checkEqualNumbers(first, second)) equal = true;
-                if (!checkRotation(first, second)) rotation = false;
+                if (!isIncreasing(first, second)) increasing = false;
+                if (isEqualNumbers(first, second)) equal = true;
+                if (!isRotation(first, second)) rotation = false;
                 first = second;
                 second = scanner.nextInt();
             }
+
             if (increasing) part1 = "The numbers are increasing, ";
             else part1 = "The numbers aren`t increasing, ";
 
@@ -56,8 +59,8 @@ public class Task10 {
 
             if (rotation) part3 = "has rotation";
             else part3 = "has no rotation";
-            System.out.println(part1 + part2 + part3);
 
+            System.out.println(part1 + part2 + part3);
         }
     }
 }

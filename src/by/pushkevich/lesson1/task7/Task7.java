@@ -11,11 +11,11 @@ import java.util.Scanner;
 
 public class Task7 {
     public static void main(String[] args) {
-        run();
+        printResult(123.456);
     }
 
     // Выводит число с замененной местами целой и дробной части аргумента
-    private static void solution(double number) {
+    private static void printResult(double number) {
         int a = (int) Math.floor(number);
         int b = (int) (number * 1000 - a * 1000);
         double result = b + ((double) a / 1000);
@@ -23,10 +23,10 @@ public class Task7 {
         System.out.println("After swap: " + result);
     }
 
-    private static void run() {
-        try (Scanner scanner = new Scanner(System.in).useLocale(Locale.US)) {
-            System.out.println("Enter a number (nnn.mmm):");
-            solution(scanner.nextDouble());
-        }
-    }
+//    private static void run() {
+//        try (Scanner scanner = new Scanner(System.in).useLocale(Locale.US)) {
+//            System.out.println("Enter a number (nnn.mmm):");
+//            printResult(scanner.nextDouble());
+//        }
+//    }
 }

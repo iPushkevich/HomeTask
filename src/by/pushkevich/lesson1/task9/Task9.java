@@ -6,19 +6,21 @@ package by.pushkevich.lesson1.task9;
 */
 public class Task9 {
     public static void main(String[] args) {
-        nonRecSolution();
+        printResult();
     }
 
-    // Вычесляет значение выражения согласно заданому условию.
-    private static void nonRecSolution() {
-        int start = 2;
-        int sum = 3;
-        long result = 3;
-        while (start < 10) {
-            start++;
-            sum += start;
+    // Вычисляет значение выражения согласно заданому условию.
+    private static void printResult() {
+        int point = 2; // Цифра после первой итерации
+        int sum = 3; // Сумма первой итерации
+        long result = sum;
+
+        while (point < 10) {
+            point++;
+            sum += point;
             result *= sum;
         }
+
         System.out.println("The result is: " + result);
     }
 }
