@@ -28,29 +28,30 @@ public class Task6 {
     private static void printIntOverflow(int firstElement, int step) {
         int n = 1; // Кол-во элементов
         long sum = firstElement; // Сумма элементов
-        int nextElement = firstElement + step; // Следующий элемент
+        long nextElement = firstElement; // Следующий элемент
 
         while (sum <= Integer.MAX_VALUE && sum >= Integer.MIN_VALUE) {
+            nextElement += (long) step;
             sum += nextElement;
-            nextElement += step;
             n++;
         }
-
-        System.out.println("n = " + n + " overflows Integer");
+        System.out.println("n = " + n + " overflows Sn (Integer)");
     }
 
-    private static void printLongOverflow(int firstElement, int step) {
+    private static void printLongOverflow(long firstElement, long step) {
         long n = 1; // Кол-во элементов
         double sum = firstElement; // Сумма элементов
-        long nextElement = firstElement + step; // Следующий элемент
+        double nextElement = firstElement; // Следующий элемент
 
-        while (sum <= Long.MAX_VALUE && sum >= Long.MIN_VALUE) {
-            sum += nextElement;
-            nextElement += step;
-            n++;
+        if (firstElement == Long.MIN_VALUE) n = 2;
+        else {
+            while (sum <= Long.MAX_VALUE && sum >= Long.MIN_VALUE) {
+                nextElement += step;
+                sum += nextElement;
+                n++;
+            }
         }
-
-        System.out.println("n = " + n + " overflows Long");
+        System.out.println("n = " + n + " overflows Sn (Long)");
     }
 
 
