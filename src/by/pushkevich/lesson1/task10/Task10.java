@@ -34,31 +34,25 @@ public class Task10 {
         System.out.println("Enter numbers (two and more):" + "\n" + "0 - exit");
 
         try (Scanner scanner = new Scanner(System.in)) {
-            int first = scanner.nextInt();
-            int second = scanner.nextInt();
-            boolean increasing = true;
-            boolean equal = false;
-            boolean rotation = true;
-            String part1;
-            String part2;
-            String part3;
+            int firstNumber = scanner.nextInt();
+            int secondNumber = scanner.nextInt();
+            String part1 = null;
+            String part2 = null;
+            String part3 = null;
 
-            while (second != 0) {
-                if (!isIncreasing(first, second)) increasing = false;
-                if (isEqualNumbers(first, second)) equal = true;
-                if (!isRotation(first, second)) rotation = false;
-                first = second;
-                second = scanner.nextInt();
+            while (secondNumber != 0) {
+                if (secondNumber > firstNumber) part1 = "The numbers are increasing, ";
+                else part1 = "The numbers aren`t increasing, ";
+
+                if (firstNumber == secondNumber) part2 = "the line contains equal numbers, ";
+                else part2 = "the line doesn`t contain equal numbers, ";
+
+                if ((firstNumber > 0 && secondNumber < 0) || (firstNumber < 0 && secondNumber > 0)) part3 = "has rotation";
+                else part3 = "has no rotation";
+
+                firstNumber = secondNumber;
+                secondNumber = scanner.nextInt();
             }
-
-            if (increasing) part1 = "The numbers are increasing, ";
-            else part1 = "The numbers aren`t increasing, ";
-
-            if (equal) part2 = "the line contains equal numbers, ";
-            else part2 = "the line doesn`t contain equal numbers, ";
-
-            if (rotation) part3 = "has rotation";
-            else part3 = "has no rotation";
 
             System.out.println(part1 + part2 + part3);
         }
