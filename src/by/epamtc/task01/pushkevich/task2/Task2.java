@@ -1,10 +1,4 @@
-package by.pushkevich.lesson1.task2;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.Scanner;
+package by.epamtc.task01.pushkevich.task2;
 
 /*
         Вычислите число и месяц в невисокосном году по номеру дня.

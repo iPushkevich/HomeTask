@@ -1,4 +1,4 @@
-package by.pushkevich.lesson1.task9;
+package by.epamtc.task01.pushkevich.task9;
 
 /*
     Вычислить: (1+2) * (1+2+3) * ... * (1+2+...+10).
@@ -6,11 +6,11 @@ package by.pushkevich.lesson1.task9;
 */
 public class Task9 {
     public static void main(String[] args) {
-        printResult();
+        System.out.println(getResult());
     }
 
     // Вычисляет значение выражения согласно заданому условию.
-    private static void printResult() {
+    private static long getResult() {
         int point = 2; // Цифра после первой итерации
         int sum = 3; // Сумма первой итерации
         long result = sum;
@@ -21,6 +21,6 @@ public class Task9 {
             result *= sum;
         }
 
-        System.out.println("The result is: " + result);
+        return result;
     }
 }

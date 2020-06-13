@@ -1,4 +1,4 @@
-package by.pushkevich.lesson1.task10;
+package by.epamtc.task01.pushkevich.task10;
 
 import java.util.Scanner;
 
@@ -11,26 +11,10 @@ import java.util.Scanner;
 */
 public class Task10 {
     public static void main(String[] args) {
-        run();
+        printResult();
     }
 
-    // Проверяет, возрастает ли последовательность
-    private static boolean isIncreasing(int a, int b) {
-        return b > a;
-    }
-
-    // Проверяет, имеются ли равные "соседи"
-    private static boolean isEqualNumbers(int a, int b) {
-        return a == b;
-    }
-
-    // Проверяет, чередуются ли знаки аргументов
-    private static boolean isRotation(int a, int b) {
-        return ((a > 0 && b < 0) || (a < 0 && b > 0));
-
-    }
-
-    private static void run() {
+    private static void printResult() {
         System.out.println("Enter numbers (two and more):" + "\n" + "0 - exit");
 
         try (Scanner scanner = new Scanner(System.in)) {

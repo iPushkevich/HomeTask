@@ -1,4 +1,4 @@
-package by.pushkevich.lesson1.task6;
+package by.epamtc.task01.pushkevich.task6;
 
 /*
     Сумма первых n членов арифметической прогрессии вычисляется по формуле Sn = ( a1 + an )* n / 2.
@@ -8,8 +8,8 @@ package by.pushkevich.lesson1.task6;
 */
 public class Task6 {
     public static void main(String[] args) {
-        printIntOverflow(100, 500);
-        printLongOverflow(100, 500);
+        System.out.println(getIntOverflow(Integer.MIN_VALUE, Integer.MIN_VALUE));
+        System.out.println(getLongOverflow(100500, 100500));
     }
 
     /*
@@ -25,7 +25,7 @@ public class Task6 {
 //        System.out.println("n = " + n + " overflows Integer");
 //    }
 
-    private static void printIntOverflow(int firstElement, int step) {
+    private static int getIntOverflow(int firstElement, int step) {
         int n = 1; // Кол-во элементов
         long sum = firstElement; // Сумма элементов
         long nextElement = firstElement; // Следующий элемент
@@ -35,14 +35,15 @@ public class Task6 {
             sum += nextElement;
             n++;
         }
-        System.out.println("n = " + n + " overflows Sn (Integer)");
+        return n;
     }
 
-    private static void printLongOverflow(long firstElement, long step) {
+    private static long getLongOverflow(long firstElement, long step) {
         long n = 1; // Кол-во элементов
         double sum = firstElement; // Сумма элементов
         double nextElement = firstElement; // Следующий элемент
 
+        // При начальном значении Long.MIN_VALUE, любой второй элемент будет переполняющим
         if (firstElement == Long.MIN_VALUE) n = 2;
         else {
             while (sum <= Long.MAX_VALUE && sum >= Long.MIN_VALUE) {
@@ -51,26 +52,6 @@ public class Task6 {
                 n++;
             }
         }
-        System.out.println("n = " + n + " overflows Sn (Long)");
+        return n;
     }
-
-
-//    private static void run() {
-//        try (Scanner scanner = new Scanner(System.in)) {
-//            System.out.println("Enter start position:");
-//            int start = scanner.nextInt();
-//
-//            System.out.println("Enter a step:");
-//            int step = scanner.nextInt();
-//
-//            if (step == 0) {
-//                System.out.println("Incorrect input. Try again");
-//                run();
-//            }
-//
-////            getResult(start, step);
-//            printIntOverflow(start, step);
-//            printLongOverflow(start, step);
-//        }
-//    }
 }
